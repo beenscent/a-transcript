@@ -25,7 +25,7 @@
 					if (isset($_POST['transcribe'])) {
 						$audio = $_FILES['audiofile']['name'];
 						if (move_uploaded_file($_FILES['audiofile']['tmp_name'], 'audio/'.$audio)) {
-							$result = shell_exec("python C:/laragon/www/transcribeme/audio/transcribe.py " . $audio);
+							$result = shell_exec("python C:/laragon/www/transcribeme/audio/transcribe.py " . escapeshellarg($audio));
 							echo '<p>'.trim($result).'</p>';
 						}
 						else {
